@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA Animal Kill Clock</title>
+    <style>
+        /* --- GLOBAL STYLES (SA THEME) --- */
+        :root {
+            /* Official SA Flag Palette */
+            --sa-green: #007749;
+            --sa-gold:  #FFB81C;
+            --sa-red:   #E03C31;
+            --sa-blue:  #001489;
+            --sa-black: #000000;
+            
+            --bg-color: #fcfcfc;
+            --text-color: #222222;
+            --grey-text: #666666;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-wrapper {
+            margin-top: 40px;
+            background: #ffffff;
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            display: inline-flex;
+        }
+
+        button {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #aaa;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 25px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            color: var(--sa-green); /* Hover turns Green */
+            background-color: #f9f9f9;
+        }
+
+        button.active {
+            background-color: var(--sa-green); /* Active is SA Green */
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 119, 73, 0.3);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 1px solid #eaeaea;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 50px;
+        }
+
+        .hero-label {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey-text);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero-label span {
+            /* The "Kill Clock" underline uses SA Red for impact */
+            border-bottom: 3px solid var(--sa-red);
+            color: var(--sa-black);
+            padding-bottom: 4px;
+        }
+
+        .big-counter {
+            font-size: 90px;
+            font-weight: 900;
+            margin: 15px 0;
+            line-height: 1;
+            color: var(--sa-black);
+            font-variant-numeric: tabular-nums; 
+            letter-spacing: -3px;
+        }
+
+        @media (max-width: 600px) {
+            .big-counter { font-size: 45px; }
+        }
+
+        .hero-subtext {
+            font-size: 16px;
+            color: var(--grey-text);
+        }
+
+        .hero-subtext strong {
+            color: var(--sa-green); /* Highlight text is SA Green */
+            font-weight: 700;
+        }
+
+        /* --- GRID SECTION --- */
+        .grid-header {
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #444;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            display: inline-block;
+            /* Underline with SA Gold */
+            border-bottom: 4px solid var(--sa-gold);
+            padding-bottom: 5px;
+        }
+
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+        
+        @media (max-width: 800px) {
+             .grid-section { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+
+        /* IMAGE STYLES */
+        .animal-icon {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            display: block;
+        }
+
+        .card-name {
+            color: var(--sa-green); /* Animal Names are Green */
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card-count {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--sa-black);
+            font-variant-numeric: tabular-nums; 
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px;
+            font-size: 12px;
+            color: #aaa;
+            border-top: 1px solid #f0f0f0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <button id="btn-session" onclick="setMode('session')">Since Arrived</button>
+        <button id="btn-week" onclick="setMode('week')">This Week</button>
+        <button id="btn-year" onclick="setMode('year')" class="active">This Year</button>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-label">2025 South Africa <span>Animal Kill Clock</span></div>
+        <div class="big-counter" id="total-display">0</div>
+        <div class="hero-subtext">
+            animals killed for food <strong id="mode-label">this year</strong>.
+        </div>
+    </div>
+
+    <div class="grid-header">Death Stats</div>
+
+    <div class="grid-section">
+        
+        <div class="card">
+            <img src="images/chicken.svg" alt="Chickens" class="animal-icon">
+            <div class="card-name">Chickens</div>
+            <div class="card-count" id="count-chicken">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/cattle.svg" alt="Cattle" class="animal-icon">
+            <div class="card-name">Cattle</div>
+            <div class="card-count" id="count-cattle">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/pigs.svg" alt="Pigs" class="animal-icon">
+            <div class="card-name">Pigs</div>
+            <div class="card-count" id="count-pigs">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/sheep.svg" alt="Sheep" class="animal-icon">
+            <div class="card-name">Sheep</div>
+            <div class="card-count" id="count-sheep">0</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Estimates based on Annual SA Statistics (SAPA, DALRRD)</p>
+    </footer>
+
+    <script>
+        // --- 1. DATA CONFIGURATION ---
+        const stats = {
+            chickens: 1125000000, 
+            cattle: 2800000,
+            sheep: 5500000,
+            pigs: 3800000
+        };
+
+        const secondsInYear = 31536000;
+        
+        // Calculate Rates per second
+        const rates = {
+            chickens: stats.chickens / secondsInYear,
+            cattle: stats.cattle / secondsInYear,
+            sheep: stats.sheep / secondsInYear,
+            pigs: stats.pigs / secondsInYear
+        };
+        const totalRate = rates.chickens + rates.cattle + rates.sheep + rates.pigs;
+
+        // --- 2. TIME SETUP ---
+        const now = new Date();
+        const startOfYear = new Date(now.getFullYear(), 0, 1);
+        const startOfSession = new Date(); // Right now
+        
+        // Calculate Start of Week (Monday)
+        const startOfWeek = new Date(now);
+        const day = startOfWeek.getDay(); 
+        const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1); 
+        startOfWeek.setDate(diff);
+        startOfWeek.setHours(0,0,0,0);
+
+        let currentMode = 'year'; 
+
+        // --- 3. FUNCTIONS ---
+
+        function setMode(mode) {
+            currentMode = mode;
+            
+            // Text Update
+            const labels = {
+                'year': 'this year',
+                'week': 'this week',
+                'session': 'since you arrived'
+            };
+            document.getElementById('mode-label').innerText = labels[mode];
+
+            // Button Styles
+            document.getElementById('btn-session').className = '';
+            document.getElementById('btn-week').className = '';
+            document.getElementById('btn-year').className = '';
+            document.getElementById('btn-' + mode).className = 'active';
+        }
+
+        function updateCounters() {
+            const currentTime = new Date();
+            let seconds = 0;
+
+            if (currentMode === 'year') {
+                seconds = (currentTime - startOfYear) / 1000;
+            } else if (currentMode === 'week') {
+                seconds = (currentTime - startOfWeek) / 1000;
+            } else if (currentMode === 'session') {
+                seconds = (currentTime - startOfSession) / 1000;
+            }
+
+            // Safety check
+            if (seconds < 0) seconds = 0;
+
+            // Update DOM
+            document.getElementById('total-display').innerText = Math.floor(totalRate * seconds).toLocaleString();
+            document.getElementById('count-chicken').innerText = Math.floor(rates.chickens * seconds).toLocaleString();
+            document.getElementById('count-cattle').innerText = Math.floor(rates.cattle * seconds).toLocaleString();
+            document.getElementById('count-pigs').innerText = Math.floor(rates.pigs * seconds).toLocaleString();
+            document.getElementById('count-sheep').innerText = Math.floor(rates.sheep * seconds).toLocaleString();
+
+            requestAnimationFrame(updateCounters);
+        }
+
+        // --- 4. START ENGINE ---
+        updateCounters();
+
+    </script>
+</body>
+</html>
