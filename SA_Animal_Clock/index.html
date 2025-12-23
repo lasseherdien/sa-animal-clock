@@ -5,189 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SA Animal Kill Clock</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <style>
-        /* --- GLOBAL STYLES (SA THEME) --- */
-        :root {
-            /* Official SA Flag Palette */
-            --sa-green: #007749;
-            --sa-gold:  #FFB81C;
-            --sa-red:   #E03C31;
-            --sa-blue:  #001489;
-            --sa-black: #000000;
-            
-            --bg-color: #fcfcfc;
-            --text-color: #222222;
-            --grey-text: #666666;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* --- NAVIGATION --- */
-        .nav-wrapper {
-            margin-top: 40px;
-            background: #ffffff;
-            padding: 5px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
-            display: inline-flex;
-        }
-
-        button {
-            background: none;
-            border: none;
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: 800;
-            color: #aaa;
-            cursor: pointer;
-            text-transform: uppercase;
-            border-radius: 25px;
-            transition: all 0.2s ease;
-            letter-spacing: 0.5px;
-        }
-
-        button:hover {
-            color: var(--sa-green); /* Hover turns Green */
-            background-color: #f9f9f9;
-        }
-
-        button.active {
-            background-color: var(--sa-green); /* Active is SA Green */
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 119, 73, 0.3);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            text-align: center;
-            padding: 50px 20px;
-            border-bottom: 1px solid #eaeaea;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 50px;
-        }
-
-        .hero-label {
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--grey-text);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .hero-label span {
-            /* The "Kill Clock" underline uses SA Red for impact */
-            border-bottom: 3px solid var(--sa-red);
-            color: var(--sa-black);
-            padding-bottom: 4px;
-        }
-
-        .big-counter {
-            font-size: 90px;
-            font-weight: 900;
-            margin: 15px 0;
-            line-height: 1;
-            color: var(--sa-black);
-            font-variant-numeric: tabular-nums; 
-            letter-spacing: -3px;
-        }
-
-        @media (max-width: 600px) {
-            .big-counter { font-size: 45px; }
-        }
-
-        .hero-subtext {
-            font-size: 16px;
-            color: var(--grey-text);
-        }
-
-        .hero-subtext strong {
-            color: var(--sa-green); /* Highlight text is SA Green */
-            font-weight: 700;
-        }
-
-        /* --- GRID SECTION --- */
-        .grid-header {
-            font-size: 18px;
-            font-weight: 900;
-            text-transform: uppercase;
-            color: #444;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-            display: inline-block;
-            /* Underline with SA Gold */
-            border-bottom: 4px solid var(--sa-gold);
-            padding-bottom: 5px;
-        }
-
-        .grid-section {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 90%;
-            max-width: 1200px;
-            margin-bottom: 100px;
-            text-align: center;
-        }
-        
-        @media (max-width: 800px) {
-             .grid-section { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-        }
-
-        /* IMAGE STYLES */
-        .animal-icon {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-            margin-bottom: 15px;
-            opacity: 0.9;
-            display: block;
-        }
-
-        .card-name {
-            color: var(--sa-green); /* Animal Names are Green */
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .card-count {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--sa-black);
-            font-variant-numeric: tabular-nums; 
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 40px;
-            font-size: 12px;
-            color: #aaa;
-            border-top: 1px solid #f0f0f0;
-            width: 100%;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -211,60 +29,151 @@
         
         <div class="card">
             <img src="images/chicken.svg" alt="Chickens" class="animal-icon">
-            <div class="card-name">Chickens</div>
+            <div class="card-name">Chickens<sup>1</sup></div>
             <div class="card-count" id="count-chicken">0</div>
         </div>
 
         <div class="card">
             <img src="images/cattle.svg" alt="Cattle" class="animal-icon">
-            <div class="card-name">Cattle</div>
+            <div class="card-name">Cattle<sup>2</sup></div>
             <div class="card-count" id="count-cattle">0</div>
         </div>
 
         <div class="card">
-            <img src="images/pigs.svg" alt="Pigs" class="animal-icon">
-            <div class="card-name">Pigs</div>
+            <img src="images/pig.svg" alt="Pigs" class="animal-icon">
+            <div class="card-name">Pigs<sup>2</sup></div>
             <div class="card-count" id="count-pigs">0</div>
         </div>
 
         <div class="card">
             <img src="images/sheep.svg" alt="Sheep" class="animal-icon">
-            <div class="card-name">Sheep</div>
+            <div class="card-name">Sheep<sup>2</sup></div>
             <div class="card-count" id="count-sheep">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/ostrich.svg" alt="Ostriches" class="animal-icon">
+            <div class="card-name">Ostriches<sup>3</sup></div>
+            <div class="card-count" id="count-ostrich">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/crocodile.svg" alt="Crocodiles" class="animal-icon">
+            <div class="card-name">Crocodiles<sup>4</sup></div>
+            <div class="card-count" id="count-croc">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/wild-caught-fish.svg" alt="Wild-Caught Fish" class="animal-icon">
+            <div class="card-name">Wild-Caught Fish<sup>5</sup></div>
+            <div class="card-count" id="count-wildfish">0</div>
+        </div>
+
+        <div class="card">
+            <img src="images/farmed-fish.svg" alt="Farmed Fish" class="animal-icon">
+            <div class="card-name">Farmed Fish<sup>6</sup></div>
+            <div class="card-count" id="count-farmfish">0</div>
         </div>
 
     </div>
 
-    <footer>
-        <p>Estimates based on Annual SA Statistics (SAPA, DALRRD)</p>
+    <footer class="data-section">
+        <div class="footer-content">
+          
+          <div class="footer-column">
+            <h3>Data Sources</h3>
+            
+            <div class="source-item">
+              <a href="https://www.sapoultry.co.za/wp-content/uploads/2025/06/SAPA-Board-Report-2024.pdf" target="_blank">SAPA Board Report 2024</a>
+              <span class="source-org">SA Poultry Association - Released June 2025</span>
+            </div>
+
+            <div class="source-item">
+              <span class="source-label">Red Meat Industry (RMIS/BFAP):</span>
+              <a href="https://rmis.co.za/wp-content/uploads/2025/09/BFAP-Report_Trajectories-of-South-Africas-Red-Meat-Industry_2025-09-01.pdf" target="_blank">BFAP Report: Trajectories of SA Red Meat Industry</a>
+              <a href="https://rmis.co.za/wp-content/uploads/2025/08/Red-Meat-Industry-Report-July-2025.pdf" target="_blank">RMIS Red Meat Industry Report (July 2025)</a>
+              <span class="source-org">Released August/September 2025</span>
+            </div>
+    
+            <div class="source-item">
+              <a href="https://www.statssa.gov.za/publications/Report-13-00-00/Report-13-00-002023.pdf" target="_blank">Ocean (marine) fisheries and related services industry, 2023: Financial and production statistics</a>
+              <span class="source-org">Statistics South Africa / DFFE - Released 2025</span>
+            </div>
+
+            <div class="source-item">
+              <span class="source-label">Exotics (Ostrich & Crocodile):</span>
+              <a href="https://www.elsenburg.com/wp-content/uploads/2022/03/2020-Ostrich-Industry-Footprint.pdf" target="_blank">Ostrich Industry Footprint Report (WC Dept. Ag)</a>
+              <a href="https://southafrica.co.za/crocodile-farming.html" target="_blank">South Africa Online: Crocodile Farming</a>
+              <a href="https://cites.org/eng/prog/crocodilian/trade_data" target="_blank">CITES Trade Data (Crocodilian)</a>
+              <span class="source-org">Various Industry & Government Sources</span>
+            </div>
+          </div>
+    
+          <div class="footer-column">
+            <h3>Methodology & Notes</h3>
+            <ol class="notes-list">
+              <li>
+                <strong>Poultry & Male Chicks:</strong> Counter reflects broiler chickens slaughtered for meat (~1.125 Billion). Data derived from the SAPA Board Report 2024. Note: This excludes the millions of male chicks culled (killed at birth) in the egg industry, as they are not raised for food consumption.
+              </li>
+              <li>
+                <strong>Red Meat (Cattle, Pigs, Sheep):</strong> Data sourced from official levy statistics (RMIS) and the BFAP 2025 Trajectories report. Numbers reflect local slaughter volumes adjusted for live exports.
+              </li>
+              <li>
+                <strong>Ostriches:</strong> Data based on the Western Cape Department of Agriculture's Industry Footprint report and recent industry slaughter forecasts (~150k annually).
+              </li>
+              <li>
+                <strong>Crocodiles:</strong> 72,750 crocodiles harvested annually (2016-2018 avg). The industry is primarily driven by the skin trade, with meat utilized as a byproduct for local consumption and export. Sources: South Africa Online, CITES Trade Data.
+              </li>
+              <li>
+                <strong>Wild-Caught Fish:</strong> SA commercial fisheries report catch in <em>Metric Tons</em> (approx. 600,000t/year). To estimate lives, we divide species tonnage by average individual weight. Dominated by <strong>Anchovy</strong> (152,000t) and <strong>Sardine</strong>. <em>Note: This figure excludes bycatch (discarded non-target marine life), which academic research (e.g., Attwood et al.) estimates at ~15% of inshore trawl volume, representing millions of uncounted marine lives.</em>
+              </li>
+              <li>
+                <strong>Farmed Fish:</strong> Based on StatsSA Report 13-00-00 (2023) showing ~9,800 tons of production. This sector is dominated by <strong>Mussels</strong> and <strong>Abalone</strong> (approx. 90% of value). Individual life counts for shellfish are conservative estimates derived from total production tonnage minus shell weight to approximate living tissue weight.
+              </li>
+            </ol>
+          </div>
+    
+        </div>
+        
+        <div class="copyright">
+          &copy; 2025 SA Animal Clock. All data is for educational purposes.
+        </div>
     </footer>
 
     <script>
-        // --- 1. DATA CONFIGURATION ---
+        // --- 1. DATA CONFIGURATION (Annual Lives) ---
         const stats = {
-            chickens: 1125000000, 
-            cattle: 2800000,
-            sheep: 5500000,
-            pigs: 3800000
+            chicken:  1125000000, // SAPA 2024
+            cattle:   2800000,    // RMIS/BFAP 2025
+            pigs:     3800000,    // RMIS/BFAP 2025
+            sheep:    5500000,    // RMIS/BFAP 2025
+            ostrich:  150000,     // WC Dept Ag / Industry Forecast
+            croc:     72750,      // SA Online / CITES (2016-2018 Avg)
+            wildfish: 7800000000, // StatsSA 2023 (600k tons)
+            farmfish: 200000000   // StatsSA 2023 (10k tons)
         };
 
         const secondsInYear = 31536000;
         
         // Calculate Rates per second
         const rates = {
-            chickens: stats.chickens / secondsInYear,
-            cattle: stats.cattle / secondsInYear,
-            sheep: stats.sheep / secondsInYear,
-            pigs: stats.pigs / secondsInYear
+            chicken:  stats.chicken / secondsInYear,
+            cattle:   stats.cattle / secondsInYear,
+            pigs:     stats.pigs / secondsInYear,
+            sheep:    stats.sheep / secondsInYear,
+            ostrich:  stats.ostrich / secondsInYear,
+            croc:     stats.croc / secondsInYear,
+            wildfish: stats.wildfish / secondsInYear,
+            farmfish: stats.farmfish / secondsInYear
         };
-        const totalRate = rates.chickens + rates.cattle + rates.sheep + rates.pigs;
+        
+        const totalRate = Object.values(rates).reduce((a, b) => a + b, 0);
 
         // --- 2. TIME SETUP ---
         const now = new Date();
         const startOfYear = new Date(now.getFullYear(), 0, 1);
-        const startOfSession = new Date(); // Right now
+        const startOfSession = new Date(); 
         
-        // Calculate Start of Week (Monday)
         const startOfWeek = new Date(now);
         const day = startOfWeek.getDay(); 
         const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1); 
@@ -277,20 +186,11 @@
 
         function setMode(mode) {
             currentMode = mode;
-            
-            // Text Update
-            const labels = {
-                'year': 'this year',
-                'week': 'this week',
-                'session': 'since you arrived'
-            };
+            const labels = {'year': 'this year', 'week': 'this week', 'session': 'since you arrived'};
             document.getElementById('mode-label').innerText = labels[mode];
 
-            // Button Styles
-            document.getElementById('btn-session').className = '';
-            document.getElementById('btn-week').className = '';
-            document.getElementById('btn-year').className = '';
-            document.getElementById('btn-' + mode).className = 'active';
+            document.querySelectorAll('.nav-wrapper button').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + mode).classList.add('active');
         }
 
         function updateCounters() {
@@ -304,21 +204,22 @@
             } else if (currentMode === 'session') {
                 seconds = (currentTime - startOfSession) / 1000;
             }
-
-            // Safety check
             if (seconds < 0) seconds = 0;
 
             // Update DOM
             document.getElementById('total-display').innerText = Math.floor(totalRate * seconds).toLocaleString();
-            document.getElementById('count-chicken').innerText = Math.floor(rates.chickens * seconds).toLocaleString();
-            document.getElementById('count-cattle').innerText = Math.floor(rates.cattle * seconds).toLocaleString();
-            document.getElementById('count-pigs').innerText = Math.floor(rates.pigs * seconds).toLocaleString();
-            document.getElementById('count-sheep').innerText = Math.floor(rates.sheep * seconds).toLocaleString();
+            
+            // This loop matches 'key' from 'rates' to 'id="count-[key]"' in HTML
+            for (const [key, value] of Object.entries(rates)) {
+                const element = document.getElementById('count-' + key);
+                if (element) {
+                    element.innerText = Math.floor(value * seconds).toLocaleString();
+                }
+            }
 
             requestAnimationFrame(updateCounters);
         }
 
-        // --- 4. START ENGINE ---
         updateCounters();
 
     </script>

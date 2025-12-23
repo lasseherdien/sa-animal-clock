@@ -1,0 +1,270 @@
+/* --- GLOBAL STYLES (SA THEME) --- */
+:root {
+    --sa-green: #007749;
+    --sa-gold:  #FFB81C;
+    --sa-red:   #E03C31;
+    --sa-blue:  #001489;
+    --sa-black: #000000;
+    
+    --bg-color: #fcfcfc;
+    --text-color: #222222;
+    --grey-text: #666666;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- NAVIGATION --- */
+.nav-wrapper {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    display: inline-flex;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #aaa;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 25px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    color: var(--sa-green); 
+    background-color: #f9f9f9;
+}
+
+button.active {
+    background-color: var(--sa-green); 
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 119, 73, 0.3);
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+    border-bottom: 1px solid #eaeaea;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 50px;
+}
+
+.hero-label {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero-label span {
+    border-bottom: 3px solid var(--sa-red);
+    color: var(--sa-black);
+    padding-bottom: 4px;
+}
+
+.big-counter {
+    font-size: 90px;
+    font-weight: 900;
+    margin: 15px 0;
+    line-height: 1;
+    color: var(--sa-black);
+    font-variant-numeric: tabular-nums; 
+    letter-spacing: -3px;
+}
+
+@media (max-width: 600px) {
+    .big-counter { font-size: 45px; }
+}
+
+.hero-subtext {
+    font-size: 16px;
+    color: var(--grey-text);
+}
+
+.hero-subtext strong {
+    color: var(--sa-green); 
+    font-weight: 700;
+}
+
+/* --- GRID SECTION --- */
+.grid-header {
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    display: inline-block;
+    border-bottom: 4px solid var(--sa-gold);
+    padding-bottom: 5px;
+}
+
+.grid-section {
+    display: grid;
+    /* 4 Columns for 8 Animals (4x2 Grid) */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    /* Tablet: 2x4 Grid */
+    .grid-section { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+/* IMAGE STYLES */
+.animal-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    display: block;
+}
+
+.card-name {
+    color: var(--sa-green); 
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+/* Superscript styling for footnotes */
+.card-name sup {
+    color: var(--grey-text);
+    font-size: 9px;
+    vertical-align: super;
+    margin-left: 2px;
+}
+
+.card-count {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sa-black);
+    font-variant-numeric: tabular-nums; 
+}
+
+/* --- FOOTER & DATA SECTION --- */
+.data-section {
+    margin-top: auto;
+    width: 100%;
+    padding: 60px 0;
+    background-color: #fcfcfc; 
+    border-top: 1px solid #eee;
+    color: #333; 
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1 1 350px;
+    text-align: left;
+}
+
+.data-section h3 {
+    color: var(--sa-black);
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    display: block;
+}
+
+/* Source Items Styling */
+.source-item {
+    margin-bottom: 25px;
+}
+
+.source-item a {
+    /* UPDATED: Changed from Blue to SA Green */
+    color: var(--sa-green); 
+    text-decoration: none;
+    font-weight: 700;
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.source-item a:hover {
+    text-decoration: underline;
+}
+
+.source-org {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Notes List Styling */
+.notes-list {
+    padding-left: 15px;
+    line-height: 1.7;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+.notes-list li {
+    margin-bottom: 18px;
+    padding-left: 5px;
+}
+
+.notes-list strong {
+    color: var(--sa-black);
+    font-weight: 700;
+}
+
+/* Copyright Bar */
+.copyright {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.8rem;
+    color: #999;
+}
