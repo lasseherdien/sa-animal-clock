@@ -2,7 +2,7 @@
 
 A real-time data visualisation tracking animal slaughter statistics in South Africa. This project serves as an educational tool to visualise the scale of food production and consumption in SA.
 
-**[View Live Demo](https://sa-kill-count.netlify.app/)
+**[View Live Demo](https://sa-kill-count.netlify.app/)**
 
 ## About
 This static web application functions as a digital "tally counter." It takes annual South African slaughter statistics and calculates a "kill rate per second" to display a constantly ticking counter.
