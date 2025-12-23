@@ -176,6 +176,14 @@ button.active {
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    border-radius: 10px;
+}
+
+.card:hover {
+    background-color: #f0fdf4; /* Very light green on hover */
+    transform: translateY(-5px);
 }
 
 /* IMAGE STYLES */
@@ -204,9 +212,8 @@ button.active {
     margin-left: 2px;
 }
 
-/* INCREASED SIZE HERE */
 .card-count {
-    font-size: 36px; /* Bigger size (was 28px) */
+    font-size: 36px;
     font-weight: 700;
     color: var(--sa-black);
     font-variant-numeric: tabular-nums; 
@@ -230,12 +237,12 @@ button.active {
     padding: 0 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 60px; /* Increased gap between columns */
-    justify-content: center; /* Center the columns */
+    gap: 60px;
+    justify-content: center;
 }
 
 .footer-column {
-    flex: 1 1 400px; /* Wider columns */
+    flex: 1 1 400px;
     text-align: left;
     max-width: 500px;
 }
@@ -316,3 +323,81 @@ button.active {
     color: #999;
     width: 100%;
 }
+
+/* --- MODAL (POPUP) STYLES --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    border-top: 5px solid var(--sa-green);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.modal-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--sa-black);
+    margin: 0;
+}
+
+.modal-body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.close-btn:hover { color: var(--sa-red); }

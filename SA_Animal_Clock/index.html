@@ -53,49 +53,49 @@
         </div>
 
         <div class="grid-section">
-            <div class="card">
+            <div class="card" onclick="openModal('chicken')">
                 <img src="images/chicken.svg" alt="Chickens" class="animal-icon">
                 <div class="card-name">Chickens<sup>1</sup></div>
                 <div class="card-count" id="count-chicken">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('cattle')">
                 <img src="images/cattle.svg" alt="Cattle" class="animal-icon">
                 <div class="card-name">Cattle<sup>2</sup></div>
                 <div class="card-count" id="count-cattle">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('pigs')">
                 <img src="images/pig.svg" alt="Pigs" class="animal-icon">
                 <div class="card-name">Pigs<sup>2</sup></div>
                 <div class="card-count" id="count-pigs">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('sheep')">
                 <img src="images/sheep.svg" alt="Sheep" class="animal-icon">
                 <div class="card-name">Sheep<sup>2</sup></div>
                 <div class="card-count" id="count-sheep">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('ostrich')">
                 <img src="images/ostrich.svg" alt="Ostriches" class="animal-icon">
                 <div class="card-name">Ostriches<sup>3</sup></div>
                 <div class="card-count" id="count-ostrich">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('croc')">
                 <img src="images/crocodile.svg" alt="Crocodiles" class="animal-icon">
                 <div class="card-name">Crocodiles<sup>4</sup></div>
                 <div class="card-count" id="count-croc">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('wildfish')">
                 <img src="images/wild-caught-fish.svg" alt="Wild-Caught Fish" class="animal-icon">
                 <div class="card-name">Wild-Caught Fish<sup>5</sup></div>
                 <div class="card-count" id="count-wildfish">0</div>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('farmfish')">
                 <img src="images/farmed-fish.svg" alt="Farmed Fish" class="animal-icon">
                 <div class="card-name">Farmed Fish<sup>6</sup></div>
                 <div class="card-count" id="count-farmfish">0</div>
@@ -158,6 +158,20 @@
         </div>
     </footer>
 
+    <div class="modal-overlay" id="info-modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal(event)">&times;</button>
+            
+            <div class="modal-header">
+                <img src="" id="modal-img" class="modal-icon" alt="">
+                <h2 class="modal-title" id="modal-title">Animal Facts</h2>
+            </div>
+            
+            <div class="modal-body" id="modal-text">
+                </div>
+        </div>
+    </div>
+
     <script>
         const stats = {
             chicken:  1125000000, 
@@ -170,8 +184,18 @@
             farmfish: 200000000   
         };
 
+        const animalFacts = {
+            chicken: `<strong>The Reality in SA:</strong> <br><br>Over 1 billion broiler chickens are slaughtered annually in South Africa. Most are raised in windowless sheds holding up to 40,000 birds, where they are bred to grow so fast their legs often break under their own weight.<br><br><strong>Key Issue:</strong> Ammonia burns from litter and heart failure due to rapid growth are common before they reach slaughter age at just 35 days old.`,
+            cattle: `<strong>The Reality in SA:</strong> <br><br>While many cattle start on pasture, the majority of beef in SA comes from feedlots (A-grade). Here, animals are crowded into barren pens and fed grain diets to fatten them quickly, which can cause severe digestive distress.<br><br><strong>Key Issue:</strong> Branding, dehorning, and castration are often performed without pain relief.`,
+            pigs: `<strong>The Reality in SA:</strong> <br><br>Factory farmed pigs spend their lives on concrete floors. Mother pigs (sows) are often kept in "gestation crates"—metal cages so small they cannot turn around—for weeks at a time during pregnancy.<br><br><strong>Key Issue:</strong> Tail docking (cutting tails off) is standard practice to stop stressed pigs from biting each other.`,
+            sheep: `<strong>The Reality in SA:</strong> <br><br>Sheep are subjected to tail docking and castration, usually without anesthetic. Live export is a major controversy, where thousands of sheep are shipped from East London to the Middle East in cramped, overheated vessels.<br><br><strong>Key Issue:</strong> Heat stress and disease outbreaks on live export ships.`,
+            ostrich: `<strong>The Reality in SA:</strong> <br><br>South Africa is the world leader in ostrich products. While they have more space than factory chickens, they are the only animal slaughtered primarily for their skin (leather) rather than meat.<br><br><strong>Key Issue:</strong> Plucking of feathers while alive remains a controversial welfare concern in some unregulated areas.`,
+            croc: `<strong>The Reality in SA:</strong> <br><br>Crocodiles are farmed in concrete pits, primarily for the luxury fashion industry (handbags and shoes). They are semi-aquatic wild animals kept in crowded conditions that prevent natural behaviors.<br><br><strong>Key Issue:</strong> Slaughter often involves severing the spinal cord while the animal is fully conscious.`,
+            wildfish: `<strong>The Reality in SA:</strong> <br><br>Billions of fish are pulled from our oceans. Commercial trawlers drag massive nets that destroy the seafloor.<br><br><strong>Key Issue:</strong> "Bycatch" is the biggest tragedy—millions of dolphins, turtles, and seabirds are accidentally caught and killed in the nets, then discarded.`,
+            farmfish: `<strong>The Reality in SA:</strong> <br><br>Aquaculture is growing rapidly. Fish are kept in high-density cages where disease spreads quickly.<br><br><strong>Key Issue:</strong> Slaughter methods often involve asphyxiation (suffocation) on ice, which can take several minutes of suffering.`
+        };
+
         const secondsInYear = 31536000;
-        
         const rates = {
             chicken:  stats.chicken / secondsInYear,
             cattle:   stats.cattle / secondsInYear,
@@ -182,26 +206,48 @@
             wildfish: stats.wildfish / secondsInYear,
             farmfish: stats.farmfish / secondsInYear
         };
-        
         const totalRate = Object.values(rates).reduce((a, b) => a + b, 0);
 
         const now = new Date();
         const startOfYear = new Date(now.getFullYear(), 0, 1);
         const startOfSession = new Date(); 
-        
         const startOfWeek = new Date(now);
         const day = startOfWeek.getDay(); 
         const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1); 
         startOfWeek.setDate(diff);
         startOfWeek.setHours(0,0,0,0);
-
         let currentMode = 'year'; 
+
+        function openModal(animal) {
+            const modal = document.getElementById('info-modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            const img = document.getElementById('modal-img');
+
+            title.innerText = animal.charAt(0).toUpperCase() + animal.slice(1) + " Facts";
+            text.innerHTML = animalFacts[animal] || "No data available.";
+            
+            // Map keys to filenames
+            let imgName = animal;
+            if (animal === 'wildfish') imgName = 'wild-caught-fish';
+            if (animal === 'farmfish') imgName = 'farmed-fish';
+            if (animal === 'pigs') imgName = 'pig';
+            if (animal === 'croc') imgName = 'crocodile';
+            
+            img.src = `images/${imgName}.svg`;
+            modal.classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (event.target.classList.contains('modal-overlay') || event.target.classList.contains('close-btn')) {
+                document.getElementById('info-modal').classList.remove('active');
+            }
+        }
 
         function setMode(mode) {
             currentMode = mode;
             const labels = {'year': 'this year', 'week': 'this week', 'session': 'since you arrived'};
             document.getElementById('mode-label').innerText = labels[mode];
-
             document.querySelectorAll('.nav-wrapper button').forEach(b => b.classList.remove('active'));
             document.getElementById('btn-' + mode).classList.add('active');
         }
@@ -209,7 +255,6 @@
         function updateCounters() {
             const currentTime = new Date();
             let seconds = 0;
-
             if (currentMode === 'year') {
                 seconds = (currentTime - startOfYear) / 1000;
             } else if (currentMode === 'week') {
@@ -227,7 +272,6 @@
                     element.innerText = Math.floor(value * seconds).toLocaleString();
                 }
             }
-
             requestAnimationFrame(updateCounters);
         }
 
