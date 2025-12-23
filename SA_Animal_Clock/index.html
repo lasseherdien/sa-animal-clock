@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Track How Many Animals Were Killed This Year in South Africa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track How Many Animals Were Killed This Year in South Africa</title>
+    
     <meta name="title" content="Track How Many Animals Were Killed This Year in South Africa">
     <meta name="description" content="A real-time dashboard tracking the scale of animal slaughter for food production in South Africa. See the live data for 2025.">
 
@@ -9,118 +12,115 @@
     <meta property="og:url" content="https://sa-animal-clock.netlify.app/">
     <meta property="og:title" content="Track How Many Animals Were Killed This Year in South Africa">
     <meta property="og:description" content="A real-time dashboard tracking the scale of animal slaughter for food production in South Africa. See the live data for 2025.">
-    <meta property="og:image" content="https://sa-animal-clock.netlify.app/images/social-share.png">
+    <meta property="og:image" content="https://sa-animal-clock.netlify.app/images/social-share.png?v=2">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sa-animal-clock.netlify.app/">
     <meta property="twitter:title" content="Track How Many Animals Were Killed This Year in South Africa">
     <meta property="twitter:description" content="A real-time dashboard tracking the scale of animal slaughter for food production in South Africa. See the live data for 2025.">
-    <meta property="twitter:image" content="https://sa-animal-clock.netlify.app/images/social-share.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SA Animal Kill Clock</title>
+    <meta property="twitter:image" content="https://sa-animal-clock.netlify.app/images/social-share.png?v=2">
+
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a href="https://github.com/lasseherdien/sa-animal-clock" target="_blank" class="github-corner" aria-label="View source on GitHub">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-    <div class="nav-wrapper">
+
+    <a href="https://github.com/lasseherdien/sa-animal-clock" target="_blank" class="github-corner" aria-label="View source on GitHub">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+        </svg>
+    </a>
+
+    <nav class="nav-wrapper">
         <button id="btn-session" onclick="setMode('session')">Since Arrived</button>
         <button id="btn-week" onclick="setMode('week')">This Week</button>
         <button id="btn-year" onclick="setMode('year')" class="active">This Year</button>
-    </div>
+    </nav>
 
-    <div class="hero-section">
-        <div class="hero-label">2025 South Africa <span>Animal Kill Clock</span></div>
-        <div class="big-counter" id="total-display">0</div>
-        <div class="hero-subtext">
-            animals killed for food <strong id="mode-label">this year</strong>.
-        </div>
-    </div>
-
-    <div class="grid-header">Death Stats</div>
-
-    <div class="grid-section">
-        
-        <div class="card">
-            <img src="images/chicken.svg" alt="Chickens" class="animal-icon">
-            <div class="card-name">Chickens<sup>1</sup></div>
-            <div class="card-count" id="count-chicken">0</div>
+    <main>
+        <div class="hero-section">
+            <div class="hero-label">2025 South Africa <span>Animal Kill Clock</span></div>
+            <div class="big-counter" id="total-display">0</div>
+            <div class="hero-subtext">
+                animals killed for food <strong id="mode-label">this year</strong>.
+            </div>
         </div>
 
-        <div class="card">
-            <img src="images/cattle.svg" alt="Cattle" class="animal-icon">
-            <div class="card-name">Cattle<sup>2</sup></div>
-            <div class="card-count" id="count-cattle">0</div>
+        <div class="header-container">
+            <div class="grid-header">Death Stats</div>
         </div>
 
-        <div class="card">
-            <img src="images/pig.svg" alt="Pigs" class="animal-icon">
-            <div class="card-name">Pigs<sup>2</sup></div>
-            <div class="card-count" id="count-pigs">0</div>
-        </div>
+        <div class="grid-section">
+            <div class="card">
+                <img src="images/chicken.svg" alt="Chickens" class="animal-icon">
+                <div class="card-name">Chickens<sup>1</sup></div>
+                <div class="card-count" id="count-chicken">0</div>
+            </div>
 
-        <div class="card">
-            <img src="images/sheep.svg" alt="Sheep" class="animal-icon">
-            <div class="card-name">Sheep<sup>2</sup></div>
-            <div class="card-count" id="count-sheep">0</div>
-        </div>
+            <div class="card">
+                <img src="images/cattle.svg" alt="Cattle" class="animal-icon">
+                <div class="card-name">Cattle<sup>2</sup></div>
+                <div class="card-count" id="count-cattle">0</div>
+            </div>
 
-        <div class="card">
-            <img src="images/ostrich.svg" alt="Ostriches" class="animal-icon">
-            <div class="card-name">Ostriches<sup>3</sup></div>
-            <div class="card-count" id="count-ostrich">0</div>
-        </div>
+            <div class="card">
+                <img src="images/pig.svg" alt="Pigs" class="animal-icon">
+                <div class="card-name">Pigs<sup>2</sup></div>
+                <div class="card-count" id="count-pigs">0</div>
+            </div>
 
-        <div class="card">
-            <img src="images/crocodile.svg" alt="Crocodiles" class="animal-icon">
-            <div class="card-name">Crocodiles<sup>4</sup></div>
-            <div class="card-count" id="count-croc">0</div>
-        </div>
+            <div class="card">
+                <img src="images/sheep.svg" alt="Sheep" class="animal-icon">
+                <div class="card-name">Sheep<sup>2</sup></div>
+                <div class="card-count" id="count-sheep">0</div>
+            </div>
 
-        <div class="card">
-            <img src="images/wild-caught-fish.svg" alt="Wild-Caught Fish" class="animal-icon">
-            <div class="card-name">Wild-Caught Fish<sup>5</sup></div>
-            <div class="card-count" id="count-wildfish">0</div>
-        </div>
+            <div class="card">
+                <img src="images/ostrich.svg" alt="Ostriches" class="animal-icon">
+                <div class="card-name">Ostriches<sup>3</sup></div>
+                <div class="card-count" id="count-ostrich">0</div>
+            </div>
 
-        <div class="card">
-            <img src="images/farmed-fish.svg" alt="Farmed Fish" class="animal-icon">
-            <div class="card-name">Farmed Fish<sup>6</sup></div>
-            <div class="card-count" id="count-farmfish">0</div>
-        </div>
+            <div class="card">
+                <img src="images/crocodile.svg" alt="Crocodiles" class="animal-icon">
+                <div class="card-name">Crocodiles<sup>4</sup></div>
+                <div class="card-count" id="count-croc">0</div>
+            </div>
 
-    </div>
+            <div class="card">
+                <img src="images/wild-caught-fish.svg" alt="Wild-Caught Fish" class="animal-icon">
+                <div class="card-name">Wild-Caught Fish<sup>5</sup></div>
+                <div class="card-count" id="count-wildfish">0</div>
+            </div>
+
+            <div class="card">
+                <img src="images/farmed-fish.svg" alt="Farmed Fish" class="animal-icon">
+                <div class="card-name">Farmed Fish<sup>6</sup></div>
+                <div class="card-count" id="count-farmfish">0</div>
+            </div>
+        </div>
+    </main>
 
     <footer class="data-section">
         <div class="footer-content">
-          
           <div class="footer-column">
             <h3>Data Sources</h3>
-            
             <div class="source-item">
               <a href="https://www.sapoultry.co.za/wp-content/uploads/2025/06/SAPA-Board-Report-2024.pdf" target="_blank">SAPA Board Report 2024</a>
               <span class="source-org">SA Poultry Association - Released June 2025</span>
             </div>
-
             <div class="source-item">
               <span class="source-label">Red Meat Industry (RMIS/BFAP):</span>
               <a href="https://rmis.co.za/wp-content/uploads/2025/09/BFAP-Report_Trajectories-of-South-Africas-Red-Meat-Industry_2025-09-01.pdf" target="_blank">BFAP Report: Trajectories of SA Red Meat Industry</a>
               <a href="https://rmis.co.za/wp-content/uploads/2025/08/Red-Meat-Industry-Report-July-2025.pdf" target="_blank">RMIS Red Meat Industry Report (July 2025)</a>
               <span class="source-org">Released August/September 2025</span>
             </div>
-    
             <div class="source-item">
               <a href="https://www.statssa.gov.za/publications/Report-13-00-00/Report-13-00-002023.pdf" target="_blank">Ocean (marine) fisheries and related services industry, 2023: Financial and production statistics</a>
               <span class="source-org">Statistics South Africa / DFFE - Released 2025</span>
             </div>
-
             <div class="source-item">
               <span class="source-label">Exotics (Ostrich & Crocodile):</span>
               <a href="https://www.elsenburg.com/wp-content/uploads/2022/03/2020-Ostrich-Industry-Footprint.pdf" target="_blank">Ostrich Industry Footprint Report (WC Dept. Ag)</a>
@@ -128,32 +128,29 @@
               <a href="https://cites.org/eng/prog/crocodilian/trade_data" target="_blank">CITES Trade Data (Crocodilian)</a>
               <span class="source-org">Various Industry & Government Sources</span>
             </div>
+            
+            <div class="source-item" style="margin-top: 40px; padding-top: 20px; border-top: 1px dashed #ddd;">
+                 <p class="source-label"><strong>Open Source Project</strong></p>
+                 <a href="https://github.com/lasseherdien/sa-animal-clock" target="_blank" class="github-link">
+                    View Source on GitHub
+                 </a>
+                 <span class="source-org">
+                    Found an error? Have newer data? Contributions welcome.
+                 </span>
+             </div>
           </div>
     
           <div class="footer-column">
             <h3>Methodology & Notes</h3>
             <ol class="notes-list">
-              <li>
-                <strong>Poultry & Male Chicks:</strong> Counter reflects broiler chickens slaughtered for meat (~1.125 Billion). Data derived from the SAPA Board Report 2024. Note: This excludes the millions of male chicks culled (killed at birth) in the egg industry, as they are not raised for food consumption.
-              </li>
-              <li>
-                <strong>Red Meat (Cattle, Pigs, Sheep):</strong> Data sourced from official levy statistics (RMIS) and the BFAP 2025 Trajectories report. Numbers reflect local slaughter volumes adjusted for live exports.
-              </li>
-              <li>
-                <strong>Ostriches:</strong> Data based on the Western Cape Department of Agriculture's Industry Footprint report and recent industry slaughter forecasts (~150k annually).
-              </li>
-              <li>
-                <strong>Crocodiles:</strong> 72,750 crocodiles harvested annually (2016-2018 avg). The industry is primarily driven by the skin trade, with meat utilized as a byproduct for local consumption and export. Sources: South Africa Online, CITES Trade Data.
-              </li>
-              <li>
-                <strong>Wild-Caught Fish:</strong> SA commercial fisheries report catch in <em>Metric Tons</em> (approx. 600,000t/year). To estimate lives, we divide species tonnage by average individual weight. Dominated by <strong>Anchovy</strong> (152,000t) and <strong>Sardine</strong>. <em>Note: This figure excludes bycatch (discarded non-target marine life), which academic research (e.g., Attwood et al.) estimates at ~15% of inshore trawl volume, representing millions of uncounted marine lives.</em>
-              </li>
-              <li>
-                <strong>Farmed Fish:</strong> Based on StatsSA Report 13-00-00 (2023) showing ~9,800 tons of production. This sector is dominated by <strong>Mussels</strong> and <strong>Abalone</strong> (approx. 90% of value). Individual life counts for shellfish are conservative estimates derived from total production tonnage minus shell weight to approximate living tissue weight.
-              </li>
+              <li><strong>Poultry & Male Chicks:</strong> Counter reflects broiler chickens slaughtered for meat (~1.125 Billion). Data derived from the SAPA Board Report 2024. Note: This excludes the millions of male chicks culled (killed at birth) in the egg industry, as they are not raised for food consumption.</li>
+              <li><strong>Red Meat (Cattle, Pigs, Sheep):</strong> Data sourced from official levy statistics (RMIS) and the BFAP 2025 Trajectories report. Numbers reflect local slaughter volumes adjusted for live exports.</li>
+              <li><strong>Ostriches:</strong> Data based on the Western Cape Department of Agriculture's Industry Footprint report and recent industry slaughter forecasts (~150k annually).</li>
+              <li><strong>Crocodiles:</strong> 72,750 crocodiles harvested annually (2016-2018 avg). The industry is primarily driven by the skin trade, with meat utilized as a byproduct for local consumption and export. Sources: South Africa Online, CITES Trade Data.</li>
+              <li><strong>Wild-Caught Fish:</strong> SA commercial fisheries report catch in <em>Metric Tons</em> (approx. 600,000t/year). To estimate lives, we divide species tonnage by average individual weight. Dominated by <strong>Anchovy</strong> (152,000t) and <strong>Sardine</strong>. <em>Note: This figure excludes bycatch (discarded non-target marine life), which academic research (e.g., Attwood et al.) estimates at ~15% of inshore trawl volume.</em></li>
+              <li><strong>Farmed Fish:</strong> Based on StatsSA Report 13-00-00 (2023) showing ~9,800 tons of production. This sector is dominated by <strong>Mussels</strong> and <strong>Abalone</strong> (approx. 90% of value). Individual life counts for shellfish are conservative estimates derived from total production tonnage minus shell weight to approximate living tissue weight.</li>
             </ol>
           </div>
-    
         </div>
         
         <div class="copyright">
@@ -162,21 +159,19 @@
     </footer>
 
     <script>
-        // --- 1. DATA CONFIGURATION (Annual Lives) ---
         const stats = {
-            chicken:  1125000000, // SAPA 2024
-            cattle:   2800000,    // RMIS/BFAP 2025
-            pigs:     3800000,    // RMIS/BFAP 2025
-            sheep:    5500000,    // RMIS/BFAP 2025
-            ostrich:  150000,     // WC Dept Ag / Industry Forecast
-            croc:     72750,      // SA Online / CITES (2016-2018 Avg)
-            wildfish: 7800000000, // StatsSA 2023 (600k tons)
-            farmfish: 200000000   // StatsSA 2023 (10k tons)
+            chicken:  1125000000, 
+            cattle:   2800000,    
+            pigs:     3800000,    
+            sheep:    5500000,    
+            ostrich:  150000,     
+            croc:     72750,      
+            wildfish: 7800000000, 
+            farmfish: 200000000   
         };
 
         const secondsInYear = 31536000;
         
-        // Calculate Rates per second
         const rates = {
             chicken:  stats.chicken / secondsInYear,
             cattle:   stats.cattle / secondsInYear,
@@ -190,7 +185,6 @@
         
         const totalRate = Object.values(rates).reduce((a, b) => a + b, 0);
 
-        // --- 2. TIME SETUP ---
         const now = new Date();
         const startOfYear = new Date(now.getFullYear(), 0, 1);
         const startOfSession = new Date(); 
@@ -202,8 +196,6 @@
         startOfWeek.setHours(0,0,0,0);
 
         let currentMode = 'year'; 
-
-        // --- 3. FUNCTIONS ---
 
         function setMode(mode) {
             currentMode = mode;
@@ -227,10 +219,8 @@
             }
             if (seconds < 0) seconds = 0;
 
-            // Update DOM
             document.getElementById('total-display').innerText = Math.floor(totalRate * seconds).toLocaleString();
             
-            // This loop matches 'key' from 'rates' to 'id="count-[key]"' in HTML
             for (const [key, value] of Object.entries(rates)) {
                 const element = document.getElementById('count-' + key);
                 if (element) {
@@ -242,7 +232,6 @@
         }
 
         updateCounters();
-
     </script>
 </body>
 </html>
